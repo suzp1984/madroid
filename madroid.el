@@ -44,7 +44,12 @@
 
 (defun madroid-get-top-dir (&optional dir)
   "return the top directory for current Android project"
-  (interactive)
+  (setq directory (if directory
+                      (file-name-as-directory
+                       (expand-file-name directory))
+                    default-directory))
+  (unless (file-directory-p directory)
+    (error "%s is not an exist diretory" directory))
   
   )
 
