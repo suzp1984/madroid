@@ -23,9 +23,28 @@
 
 ;;; Code:
 
+(defvar madroid-version 'undefined
+  "The Version of Magit that you're using.")
+
+(defvar madroid-main-buffer-name)
+
+(defgroup madroid nil
+  "control android from Emacs.")
+
+(defgroup madroid-process nil
+  "Android develop tool process used by madroid."
+  :group 'madroid)
+
+
+(defcustom madroid-android-cmd
+  "android"
+  "The Android dev tool executable used by madroid."
+  :group 'madroid-process
+  :type 'string)
 
 (defun madroid-get-top-dir (&optional dir)
   "return the top directory for current Android project"
+  (interactive)
   
   )
 
@@ -35,6 +54,12 @@
   (interactive (list (madroid-get-top-dir)))
   
   )
+
+;;;###autoload
+(defun madroid-run-sdk-manager ()
+  "Run the android sdk manager to manager the sdk."
+  (interactive)
+  (call-process madroid-android-cmd nil 0 nil nil))
 
 (provide 'madroid)
 ;;; madroid.el ends here
