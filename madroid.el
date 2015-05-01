@@ -42,7 +42,7 @@
   :group 'madroid-process
   :type 'string)
 
-(defun madroid-get-top-dir (&optional dir)
+(defun madroid-get-top-dir (&optional directory)
   "return the top directory for current Android project"
   (setq directory (if directory
                       (file-name-as-directory
@@ -50,7 +50,9 @@
                     default-directory))
   (unless (file-directory-p directory)
     (error "%s is not an exist diretory" directory))
-  
+
+  (let* ((default-directory directory))
+    )
   )
 
 ;;;###autoload
